@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        // Cast container as DieFragment to call throwDie()
         findViewById<Button>(R.id.rollDiceButton).setOnClickListener{
             (supportFragmentManager.findFragmentById(R.id.dieContainer) as DieFragment).throwDie()
         }
