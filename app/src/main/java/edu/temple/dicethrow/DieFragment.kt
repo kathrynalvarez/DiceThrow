@@ -16,6 +16,8 @@ class DieFragment : Fragment() {
 
     var dieSides: Int = 6
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -44,6 +46,6 @@ class DieFragment : Fragment() {
     }
 
     fun throwDie() {
-        dieTextView.text = Random.nextInt(dieSides).toString()
+        dieTextView.text = (Random.nextInt(dieSides) + 1).toString()
     }
 }
