@@ -17,5 +17,7 @@ class MainActivity : AppCompatActivity() {
             (supportFragmentManager.findFragmentById(R.id.dieContainer) as DieFragment).throwDie()
         }
 
+        val fragmentCompanion = DieFragment.newInstance(20)
+        supportFragmentManager.beginTransaction().add(R.id.dieContainer,fragmentCompanion).commit()
     }
 }
