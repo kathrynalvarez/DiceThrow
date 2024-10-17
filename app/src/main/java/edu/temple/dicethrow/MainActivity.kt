@@ -12,12 +12,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Cast container as DieFragment to call throwDie()
-        findViewById<Button>(R.id.rollDiceButton).setOnClickListener{
-            (supportFragmentManager.findFragmentById(R.id.dieContainer) as DieFragment).throwDie()
-        }
+        if (supportFragmentManager.findFragmentById(R.id.dieContainer) !is DieFragment) {
+            findViewById<Button>(R.id.rollDiceButton).setOnClickListener {
 
-        val fragmentCompanion = DieFragment.newInstance(20)
-        supportFragmentManager.beginTransaction().add(R.id.dieContainer,fragmentCompanion).commit()
+                val fragmentCompanion = DieFragment.newInstance(20)
+                supportFragmentManager.beginTransaction().add(R.id.dieContainer, fragmentCompanion)
+                    .commit()
+                (supportFragmentManager.findFragmentById(R.id.dieContainer) as DieFragment).throwDie()
+            }
+
+        }
     }
 }
